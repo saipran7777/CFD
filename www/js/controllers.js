@@ -112,6 +112,19 @@ $scope.postevent = function(){
 })
 .controller('SearchCtrl', function($scope,$stateParams,$state) {
 
+var client = new WindowsAzure.MobileServiceClient(
+    "https://cfdms.azure-mobile.net/",
+    "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
+);
+
+var allitems = []
+
+var item3 = client.getTable("test").read().done(function (results) {
+    console.log(results[0]['text']);
+    allitems = results
+    });
+
+
 $scope.selection3 = function(){
   // $scope.selectedlocation=true;
   // $scope.selectedname="";
@@ -129,6 +142,43 @@ $scope.selection4 = function(){
 
   $state.go('app.allselected');
 }
+
+var i = 0;
+var $scope.toshow=[]
+if ($scope.selectedlocation==true)
+{
+    for (i=allitems.length-1;i>=0;i--)
+    {
+      if (allitems[i]['location'] == $scope.xxy.venue)
+      {
+        $scope.toshow.push(allitems[i]);
+      }
+
+    }
+}
+
+if ($scope.selectedcategory==true)
+{
+    for (i=allitems.length-1;i>=0;i--)
+    {
+      if (allitems[i]['category'] == $scope.xxy.category)
+      {
+        $scope.toshow.push(allitems[i]);
+      }
+
+    }
+}
+
+if ($scope.selectedall==true)
+{
+
+     for (i=allitems.length-1;i>=0;i--)
+    {
+      $scope.toshow.push(allitems[i]);
+    }
+}
+
+
 })
 .controller('LoginCtrl', function($scope, $stateParams,$state) {
   $scope.signNew =function(){
