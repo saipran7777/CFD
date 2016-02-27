@@ -1,7 +1,40 @@
 <ion-view view-title="See all Events">
   <ion-content>
 
-    <div ng-repeat="x in toshow"><label class="item" >{{x.eventname}}</label></div>
+    <div ng-repeat="x in toshow track by $index">
+    	<label class="item" >
+
+    		<div class="{{$index}}" ng-click="changedetails({{$index}})">
+    			<center>
+    				<div class="col" >
+    					<i class="icon icon-large ion-android-calendar"></i>{{space}}{{x.eventname}}
+       					<i class="icon icon-large ion-bookmark"></i>{{space}}{{x.category}}
+       				
+       				</div>
+       			</center>
+       		</div>
+       		<div class="{{$index}}p" style="display:none">
+       			<center>
+       				<div class="col">
+       					<i class="icon ion-clipboard"></i>{{space}}{{x.eventdesc}}
+       				</div>
+       			</center>
+       		
+       			<center>
+       				<div class="col">
+       					<i class="icon ion-android-pin"></i>{{space}}{{x.location}} {{x.locationdet}}
+       				</div>
+       			</center>
+       		
+       			<center>
+       				<div class="col">
+       					<i class="icon ion-android-time"></i>{{space}}{{x.startdate}}  to {{ x.enddate}}
+       				</div>
+       			</center>
+          	</div>
+
+    	</label>
+    </div>
 
   </ion-content>
 </ion-view>

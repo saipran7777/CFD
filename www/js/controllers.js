@@ -75,16 +75,28 @@ var client = new WindowsAzure.MobileServiceClient(
           "https://cfdms.azure-mobile.net/",
           "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
       );
-
+      $scope.n=0
       $scope.allitems = [];
-      
+      $scope.space="    ";
       var item3 = client.getTable("test").read().done(function (results) {
          
           $scope.allitems = results;
           $scope.changed();
               
           
-       });   
+       }); 
+
+       $scope.changedetails = function(c){
+
+        d=c+"p";
+        if ($("."+d).css('display') == "none" )
+          //console.log("hello");
+          $("."+d).show();
+        else
+          $("."+d).hide();        
+
+      };
+ 
       $scope.changed = function(){
         var i = 0;
         $scope.toshow=[];  
@@ -106,7 +118,7 @@ var client = new WindowsAzure.MobileServiceClient(
     "https://cfdms.azure-mobile.net/",
     "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
     );
-
+    $scope.space="    ";
     var allitems = [];
 
     var item3 = client.getTable("test").read().done(function (results) {
@@ -118,7 +130,7 @@ var client = new WindowsAzure.MobileServiceClient(
 $scope.toshow=[];
 $scope.changed = function(){
     var i = 0;
-    
+    $scope.toshow=[];
     for (i=allitems.length-1;i>=0;i--){
       if (allitems[i]['category'] == $scope.xxy.category){
       $scope.toshow.push(allitems[i]);
@@ -134,7 +146,7 @@ $scope.changed = function(){
     "https://cfdms.azure-mobile.net/",
     "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
   );
-
+  $scope.space="    ";
   var allitems = [];
 
   var item3 = client.getTable("test").read().done(function (results) {
@@ -143,7 +155,7 @@ $scope.changed = function(){
     });
 
   $scope.xxy ={venue:""};
-
+  $scope.toshow=[];
   $scope.changed = function(){
     var i = 0;
     $scope.toshow=[];
