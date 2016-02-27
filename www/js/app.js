@@ -68,6 +68,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+    .state('app.searchevent', {
+      url: '/searchevent',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/searchevent.html',
+          controller: 'SearchCtrl'
+        }
+      }
+    })
     .state('app.home', {
       url: '/home',
       views: {

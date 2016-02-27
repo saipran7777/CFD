@@ -47,6 +47,10 @@ $scope.gotopostevent =function(){
 
   $state.go("app.postevent");
 };
+$scope.gotosearchevent =function(){
+
+  $state.go("app.searchevent");
+};
 var client = new WindowsAzure.MobileServiceClient(
     "https://cfdms.azure-mobile.net/",
     "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
@@ -89,6 +93,34 @@ $scope.postevent = function(){
     $state.go('app.login');
     
   };
+})
+.controller('SearchCtrl', function($scope,$stateParams,$state) {
+
+$scope.selection3 = function(){
+  $scope.selectedlocation=true;
+  $scope.selectedname="";
+  $scope.selectedcategory="";
+  $scope.selectedall="";
+}
+$scope.selection1 = function(){
+  $scope.selectedlocation="";
+  $scope.selectedname=true;
+  $scope.selectedcategory="";
+  $scope.selectedall="";
+}
+$scope.selection2 = function(){
+  $scope.selectedlocation="";
+  $scope.selectedname="";
+  $scope.selectedcategory=true;
+  $scope.selectedall="";
+}
+$scope.selection4 = function(){
+
+  $scope.selectedlocation="";
+  $scope.selectedname="";
+  $scope.selectedcategory="";
+  $scope.selectedall=true;
+}
 })
 .controller('LoginCtrl', function($scope, $stateParams,$state) {
   $scope.signNew =function(){

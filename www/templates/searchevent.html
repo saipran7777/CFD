@@ -1,0 +1,69 @@
+<style type="text/css">
+#bt{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+</style>
+<ion-view view-title="SearchEvent">
+  <ion-content>
+  <center>
+  <div class="row">
+  	
+      <label class="item">
+      	<center>
+         <button class="button button-calm" id="bt" ng-click="selection1()">Search By Name</button>
+         </center>
+     </label>
+          <label class="item"><center>
+         <button class="button button-calm" id="bt" ng-click="selection2()">Search By Category</button>
+    		</center> </label>
+          <label class="item">
+          	<center>
+         <button class="button button-calm" id="bt" ng-click="selection3()">Search By Location</button>
+      </center>
+      </label >
+  
+    </div>  
+      </center>
+      <label class="item">
+     <center>
+      <button class="button button-large button-positive" ng-click="selection4()">See all Events</button>
+       </center>
+      </label>
+       <label class="item item-input item-stacked-label" ng-if="selectedname">
+          <span class="input-label" >Search By Name</span>
+          <input type="text" placeholder="Code fun do"  required>
+       </label>
+       <label class="item item-input item-select" ng-if="selectedlocation">
+          <span class="input-label" >Search By Location</span>
+          	<select ng-model="xxy.venue" required>
+				<option>SAC</option>
+				<option>CLT</option>
+				<option>OAT</option>
+				<option>CS Block</option>
+				<option>Gurunath</option>
+				<option>ICSR</option>
+				<option>Zaitoon</option>
+				<option>Gajendra Circle</option>
+				<option>Others</option>
+			</select>
+       </label>
+       <label class="item item-input item-select" ng-if="selectedcategory">
+          <span class="input-label" >Search By Category</span>
+          	<select ng-model="xxy.category" required>
+				<option>Sports</option>
+				<option>Games</option>
+				<option>Coding</option>
+				<option>Meeting</option>
+				<option>Music</option>
+				<option>Art</option>
+				<option>Studies</option>
+				<option>Others</option>
+			</select>
+       </label>
+        <label class="item item-input item-stacked-label" ng-if="selectedall">
+          <span class="input-label" >See all Events</span>
+          
+       </label>
+  </ion-content>
+</ion-view>
