@@ -71,15 +71,92 @@ var client = new WindowsAzure.MobileServiceClient(
 })
 
 .controller('AllselectedCtrl', function($scope) {
+      var client = new WindowsAzure.MobileServiceClient(
+          "https://cfdms.azure-mobile.net/",
+          "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
+      );
 
+      $scope.allitems = [];
+      
+      var item3 = client.getTable("test").read().done(function (results) {
+         
+          $scope.allitems = results;
+          $scope.changed();
+              
+          
+       });   
+      $scope.changed = function(){
+        var i = 0;
+        $scope.toshow=[];  
+        for (i=$scope.allitems.length-1;i>=0;i--){
+            $scope.toshow.push($scope.allitems[i]);
+        }
+        console.log($scope.toshow);
+      }  
+          // console.log($scope.allitems);
+          console.log($scope.toshow);
+
+      
+      // console.log($scope.allitems);
+      
 })
 
 .controller('CategoryselectedCtrl', function($scope) {
+    var client = new WindowsAzure.MobileServiceClient(
+    "https://cfdms.azure-mobile.net/",
+    "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
+    );
 
+    var allitems = [];
+
+    var item3 = client.getTable("test").read().done(function (results) {
+  
+    allitems = results
+    });
+
+    $scope.xxy ={category:""};
+$scope.toshow=[];
+$scope.changed = function(){
+    var i = 0;
+    
+    for (i=allitems.length-1;i>=0;i--){
+      if (allitems[i]['category'] == $scope.xxy.category){
+      $scope.toshow.push(allitems[i]);
+      }
+    }
+    console.log($scope.toshow);
+  }
+  console.log($scope.toshow);
 })
 
 .controller('LocationselectedCtrl', function($scope) {
+  var client = new WindowsAzure.MobileServiceClient(
+    "https://cfdms.azure-mobile.net/",
+    "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
+  );
 
+  var allitems = [];
+
+  var item3 = client.getTable("test").read().done(function (results) {
+    
+    allitems = results
+    });
+
+  $scope.xxy ={venue:""};
+
+  $scope.changed = function(){
+    var i = 0;
+    $scope.toshow=[];
+    for (i=allitems.length-1;i>=0;i--)
+    {
+      if (allitems[i]['location'] == $scope.xxy.venue)
+      {
+        $scope.toshow.push(allitems[i]);
+      }
+
+    }
+     console.log($scope.toshow);
+  }  
 })
 
 .controller('NameselectedCtrl', function($scope) {
@@ -117,10 +194,10 @@ var client = new WindowsAzure.MobileServiceClient(
     "JdKrCxQZhNzIUBuUdKFcuXIQoXnRys50"
 );
 
-var allitems = []
+var allitems = [];
 
 var item3 = client.getTable("test").read().done(function (results) {
-    console.log(results[0]['text']);
+    
     allitems = results
     });
 
@@ -142,42 +219,6 @@ $scope.selection4 = function(){
 
   $state.go('app.allselected');
 }
-
-var i = 0;
-var $scope.toshow=[]
-if ($scope.selectedlocation==true)
-{
-    for (i=allitems.length-1;i>=0;i--)
-    {
-      if (allitems[i]['location'] == $scope.xxy.venue)
-      {
-        $scope.toshow.push(allitems[i]);
-      }
-
-    }
-}
-
-if ($scope.selectedcategory==true)
-{
-    for (i=allitems.length-1;i>=0;i--)
-    {
-      if (allitems[i]['category'] == $scope.xxy.category)
-      {
-        $scope.toshow.push(allitems[i]);
-      }
-
-    }
-}
-
-if ($scope.selectedall==true)
-{
-
-     for (i=allitems.length-1;i>=0;i--)
-    {
-      $scope.toshow.push(allitems[i]);
-    }
-}
-
 
 })
 .controller('LoginCtrl', function($scope, $stateParams,$state) {

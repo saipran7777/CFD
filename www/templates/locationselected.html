@@ -2,7 +2,7 @@
   <ion-content>
        <label class="item item-input item-select">
           <span class="input-label" >Search By Location</span>
-          	<select ng-model="xxy.venue" required>
+          	<select ng-model="xxy.venue" ng-change="changed()" required>
 				<option>SAC</option>
 				<option>CLT</option>
 				<option>OAT</option>
@@ -14,5 +14,6 @@
 				<option>Others</option>
 			</select>
        </label>
+       {{toshow}}
          </ion-content>
 </ion-view>

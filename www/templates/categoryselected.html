@@ -2,7 +2,7 @@
   <ion-content>
        <label class="item item-input item-select">
           <span class="input-label" >Search By Category</span>
-          	<select ng-model="xxy.category" required>
+          	<select ng-model="xxy.category" ng-change="changed()" required>
 				<option>Sports</option>
 				<option>Games</option>
 				<option>Coding</option>
@@ -13,5 +13,6 @@
 				<option>Others</option>
 			</select>
        </label>
+       {{toshow}}
          </ion-content>
 </ion-view>
