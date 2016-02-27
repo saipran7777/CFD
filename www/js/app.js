@@ -41,6 +41,42 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+  .state('app.allselected', {
+    url: '/allselected',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/allselected.html',
+        controller: 'AllselectedCtrl'
+      }
+    }
+  })
+  .state('app.categoryselected', {
+    url: '/categoryselected',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/categoryselected.html',
+        controller: 'CategoryselectedCtrl'
+      }
+    }
+  })
+  .state('app.locationselected', {
+    url: '/locationselected',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/locationselected.html',
+        controller: 'LocationselectedCtrl'
+      }
+    }
+  })
+  .state('app.nameselected', {
+    url: '/nameselected',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/nameselected.html',
+        controller: 'NameselectedCtrl'
+      }
+    }
+  })
   .state('app.login', {
     url: '/login',
     views: {

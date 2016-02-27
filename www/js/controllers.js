@@ -69,6 +69,22 @@ var client = new WindowsAzure.MobileServiceClient(
 .controller('SignupCtrl', function($scope) {
 
 })
+
+.controller('AllselectedCtrl', function($scope) {
+
+})
+
+.controller('CategoryselectedCtrl', function($scope) {
+
+})
+
+.controller('LocationselectedCtrl', function($scope) {
+
+})
+
+.controller('NameselectedCtrl', function($scope) {
+
+})
 .controller('PosteventCtrl', function($scope) {
 
 var client = new WindowsAzure.MobileServiceClient(
@@ -97,29 +113,21 @@ $scope.postevent = function(){
 .controller('SearchCtrl', function($scope,$stateParams,$state) {
 
 $scope.selection3 = function(){
-  $scope.selectedlocation=true;
-  $scope.selectedname="";
-  $scope.selectedcategory="";
-  $scope.selectedall="";
+  // $scope.selectedlocation=true;
+  // $scope.selectedname="";
+  // $scope.selectedcategory="";
+  // $scope.selectedall="";
+  $state.go('app.locationselected');
 }
 $scope.selection1 = function(){
-  $scope.selectedlocation="";
-  $scope.selectedname=true;
-  $scope.selectedcategory="";
-  $scope.selectedall="";
+$state.go('app.nameselected');
 }
 $scope.selection2 = function(){
-  $scope.selectedlocation="";
-  $scope.selectedname="";
-  $scope.selectedcategory=true;
-  $scope.selectedall="";
+  $state.go('app.categoryselected');
 }
 $scope.selection4 = function(){
 
-  $scope.selectedlocation="";
-  $scope.selectedname="";
-  $scope.selectedcategory="";
-  $scope.selectedall=true;
+  $state.go('app.allselected');
 }
 })
 .controller('LoginCtrl', function($scope, $stateParams,$state) {
